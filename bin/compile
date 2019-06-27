@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+# bin/compile <build-dir>
+
+# Fail immediately on non-zero exit code.
+set -e
+# Fail immediately on non-zero exit code within a pipeline.
+set -o pipefail
+# Fail on undeclared variables.
+set -u
+# Debug, echo every command
+#set -x
+
+function error() {
+  echo " !     $*" >&2
+  exit 1
+}
+
+function topic() {
+  echo "-----> $*"
+}
+
+function indent() {
+  c='s/^/       /'
+  case $(uname) in
+    Darwin) sed -l "$c";;
+    *)      sed -u "$c";;
+  esac
+}
+
+# parse and derive params
+BUILD_DIR=$1
+PASSENGER_DIR=$BUILD_DIR/vendor/passenger
+PROFILED_DIR=$BUILD_DIR/.profile.d
+
+PASSENGER_BIN_URL="https://github.com/phusion/passenger/releases/download/release-6.0.2/passenger-6.0.2.tar.gz"
+
+topic "Installing Phusion Passenger from ${PASSENGER_BIN_URL}"
+curl -s -L "${PASSENGER_BIN_URL}" > "passenger-bin.zip"
+mkdir -p "$PASSENGER_DIR"
+tar -xzvf "passenger-bin.zip" --strip 1 -C "$PASSENGER_DIR"
+rm "passenger-bin.zip"
+
+echo 'Setting up $PATH' | indent
+mkdir -p $PROFILED_DIR
+echo 'PATH=$PATH:$HOME/vendor/passenger/bin' > $PROFILED_DIR/passenger.sh

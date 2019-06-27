@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo "Phusion Passenger"
+exit 0
