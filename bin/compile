@@ -37,7 +37,7 @@ PASSENGER_BIN_URL="https://github.com/phusion/passenger/releases/download/releas
 topic "Installing Phusion Passenger from ${PASSENGER_BIN_URL}"
 curl -s -L "${PASSENGER_BIN_URL}" > "passenger-bin.zip"
 mkdir -p "$PASSENGER_DIR"
-tar -xzvf "passenger-bin.zip" --strip 1 -C "$PASSENGER_DIR"
+tar -xzf "passenger-bin.zip" --strip 1 -C "$PASSENGER_DIR"
 rm "passenger-bin.zip"
 
 echo 'Setting up $PATH' | indent
