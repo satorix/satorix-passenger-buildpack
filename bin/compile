@@ -42,4 +42,4 @@ rm "passenger-bin.zip"
 
 echo 'Setting up $PATH' | indent
 mkdir -p $PROFILED_DIR
-echo 'PATH=$PATH:$HOME/vendor/passenger/bin' > $PROFILED_DIR/passenger.sh
+echo "PATH=\$PATH:$BUILD_DIR/vendor/passenger/bin" > $PROFILED_DIR/passenger.sh
