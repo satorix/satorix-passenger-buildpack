@@ -32,7 +32,11 @@ BUILD_DIR=$1
 PASSENGER_DIR=$BUILD_DIR/vendor/passenger
 PROFILED_DIR=$BUILD_DIR/.profile.d
 
-PASSENGER_BIN_URL="https://github.com/phusion/passenger/releases/download/release-6.0.2/passenger-6.0.2.tar.gz"
+if [[ -n ${PASSENGER_BIN_URL:-} ]]; then
+	echo 'Using $PASSENGER_BIN_URL from ENV VAR for installation' | indent
+else
+	PASSENGER_BIN_URL="https://github.com/phusion/passenger/releases/download/release-6.0.2/passenger-6.0.2.tar.gz"
+fi
 
 topic "Installing Phusion Passenger from ${PASSENGER_BIN_URL}"
 curl -s -L "${PASSENGER_BIN_URL}" > "passenger-bin.zip"
