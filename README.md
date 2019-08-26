@@ -16,6 +16,6 @@ Add the buildpack to a `.buildpacks` configuration in the root of the applicatio
 Configuration
 -------------
 
+* Defaults to 64-bit Linux binary Passenger version 6.0.2 for Heroku runtime
 * `PASSENGER_BIN_URL` set the source URL for the terraform binary
-* Defaults to 64-bit Linux binary for Heroku runtime
 * Expects a `*.zip` file as [distributed by Phusion](https://github.com/phusion/passenger/releases)
