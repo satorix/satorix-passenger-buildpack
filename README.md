@@ -11,7 +11,14 @@ You must also use the [Ruby Buildpack](https://github.com/heroku/heroku-buildpac
 Usage
 -----
 
-Add the buildpack to a `.buildpacks` configuration in the root of the application directory to install the `passenger` tools.
+Add the buildpacks to a `.buildpacks` configuration in the root of the application directory to install the `passenger` tools.
+
+```
+https://github.com/heroku/heroku-buildpack-ruby
+https://github.com/satorix/satorix-passenger-buildpack
+```
+
+Place your application buildpack at the end for proper detection.
 
 Configuration
 -------------
