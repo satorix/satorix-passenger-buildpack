@@ -18,7 +18,7 @@ https://github.com/heroku/heroku-buildpack-ruby
 https://github.com/satorix/satorix-passenger-buildpack
 ```
 
-Place your application buildpack at the end for proper detection.
+Place your application buildpack as the last entry for proper detection.
 
 Configuration
 -------------
